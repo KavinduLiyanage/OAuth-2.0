@@ -1,10 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
+  const [name, setName] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  
   return (
     <div className="App">
-      Google Drive OAuth 2.0 React App
+      <form>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <input
+          type="file"
+          value={selectedFile}
+          onChange={(e) => setSelectedFile(e.target.files[0])}
+        />
+      </form>
     </div>
   );
 }
