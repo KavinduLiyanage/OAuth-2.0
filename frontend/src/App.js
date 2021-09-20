@@ -1,27 +1,50 @@
-import React, { useState } from "react";
+import React from 'react'
+import axios, { post } from 'axios';
 
-const App = () => {
-  const [name, setName] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
+class App extends React.Component {
 
-  
-  return (
-    <div className="App">
-      <form>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+  constructor(props) {
+    super(props);
+    this.state ={
+      file:null
+    }
+    this.onFormSubmit = this.onFormSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.fileUpload = this.fileUpload.bind(this)
+  }
+  onFormSubmit(e){
+    e.preventDefault() // Stop form submit
+    this.fileUpload(this.state.file).then((response)=>{
+      console.log(response.data);
+    })
+  }
+  onChange(e) {
+    this.setState({file:e.target.files[0]})
+  }
+  fileUpload(file){
+    const url = 'http://example.com/file-upload';
+    const formData = new FormData();
+    formData.append('file',file)
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }
+    return  post(url, formData,config)
+  }
 
-        <input
-          type="file"
-          value={selectedFile}
-          onChange={(e) => setSelectedFile(e.target.files[0])}
-        />
+  render() {
+    return (
+      <div>
+        <h1>SSD Google Drive OAuth 2.0</h1>
+      <form onSubmit={this.onFormSubmit}>
+        <h1>File Upload</h1>
+        <input type="file" onChange={this.onChange} />
+        <button type="submit">Upload</button>
       </form>
-    </div>
-  );
+      </div>
+   )
+  }
 }
 
 export default App;
