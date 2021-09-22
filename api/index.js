@@ -30,6 +30,35 @@ const oAuth2Client = new google.auth.OAuth2(
 
 const SCOPE = ['https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.file']
 
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+//Server init
+app.get('/', (req, res) => res.send(' API Running'));
+
+//Get OAuthURL
+app.get('/getAuthURL', (req, res) => {
+  const authUrl = oAuth2Client.generateAuthUrl({
+      access_type: 'offline',
+      scope: SCOPE,
+  });
+  console.log("Response Code: ",authUrl);
+  return res.send(authUrl);
+});
+
+//Get token from OAuthURL
+app.post('/getToken', (req, res) => {
+  if (req.body.code == null) return res.status(400).send('Invalid Request');
+  oAuth2Client.getToken(req.body.code, (err, token) => {
+      if (err) {
+          console.error('Error retrieving access token', err);
+          return res.status(400).send('Error retrieving access token');
+      }
+      res.send(token);
+  });
+});
+
 
 //Server
 const PORT = process.env.PORT || 5000;
