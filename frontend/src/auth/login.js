@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GoogleButton from 'react-google-button'
 import { display } from '@mui/system';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -31,6 +33,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+    const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -39,6 +42,15 @@ export default function SignInSide() {
       email: data.get('email'),
       password: data.get('password'),
     });
+  };
+
+  const handleChange = () => {
+    axios.get(`http://localhost:5000/getAuthURL`)
+      .then(res => {
+        // const persons = res.data;
+        console.log(res);
+        window.location.replace(res.data);
+      })
   };
 
   return (
@@ -108,7 +120,9 @@ export default function SignInSide() {
               >
                 Sign In
               </Button>
-              <div style={{display: 'flex', justifyContent: 'center', marginBottom:'15px'}}><GoogleButton style={{width: '100%'}} onClick={() => { console.log('Google button clicked') }} /></div>
+              <div style={{display: 'flex', justifyContent: 'center', marginBottom:'15px'}}>
+                  <GoogleButton style={{width: '100%'}} onClick={() => handleChange()} />
+              </div>
               
               <Grid container>
                 <Grid item xs>
