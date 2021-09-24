@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import SignInSide from './auth/login';
+import MainContainer from './containers/mainContainer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SignInSide />
+    <MainContainer />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,11 +1,9 @@
-import * as React from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -16,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GoogleButton from 'react-google-button'
 import { display } from '@mui/system';
 import axios from 'axios';
+import queryString from 'query-string';
 
 function Copyright(props) {
   return (
@@ -33,7 +32,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
-    const history = useHistory();
+  const location = useLocation();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -47,11 +46,19 @@ export default function SignInSide() {
   const handleChange = () => {
     axios.get(`http://localhost:5000/getAuthURL`)
       .then(res => {
-        // const persons = res.data;
         console.log(res);
         window.location.replace(res.data);
       })
   };
+
+  
+  useEffect(() => {
+    console.log(location);
+    console.log(queryString.parse(location.search));
+    const article = { code: queryString.parse(location.search) };
+    axios.post('http://localhost:5000/getToken', article)
+        .then(response => console.log(response));
+  }, [location])
 
   return (
     <ThemeProvider theme={theme}>
