@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import SignInSide from "../auth/login";
+import SignInSide from "./auth/login";
 // import PrivateRoute from "./ReactMiddleware/PrivateRoute";
 
 function MainContainer() {
