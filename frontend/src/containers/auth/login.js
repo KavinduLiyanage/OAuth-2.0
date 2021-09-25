@@ -15,6 +15,7 @@ import GoogleButton from "react-google-button";
 import { display } from "@mui/system";
 import axios from "axios";
 import queryString from "query-string";
+import { login } from "../../helpers/authHelper";
 
 function Copyright(props) {
   return (
@@ -59,9 +60,10 @@ export default function SignInSide() {
     console.log(location);
     console.log(queryString.parse(location.search));
     const article = { code: queryString.parse(location.search) };
-    axios
-      .post("http://localhost:5000/getToken", article)
-      .then((response) => console.log(response));
+    axios.post("http://localhost:5000/getToken", article).then((response) => {
+      console.log(response);
+      login(response.data);
+    });
   }, [location]);
 
   return (
