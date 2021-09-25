@@ -8,16 +8,6 @@ const fs = require("fs");
 const formidable = require("formidable");
 const credentials = require("./credentials.json");
 
-//import library
-// const express = require("express");
-// const app = express();
-// const bodyParser = require("body-parser");
-// const cors = require("cors");
-// const { google } = require("googleapis");
-// const fs = require("fs");
-// const formidable = require("formidable");
-// const credentials = require("./credentials.json");
-
 //initialize credentials
 const client_id = credentials.web.client_id;
 const client_secret = credentials.web.client_secret;
@@ -132,7 +122,7 @@ app.post("/fileUpload", (req, res) => {
           console.error(err);
           res.status(400).send(err);
         } else {
-          res.send("Successful");
+          res.send("Upload Successful");
         }
       }
     );
@@ -162,10 +152,10 @@ app.post("/download/:id", (req, res) => {
     function (err, response) {
       response.data
         .on("end", () => {
-          console.log("Done");
+          console.log("Download Completed");
         })
         .on("error", (err) => {
-          console.log("Error", err);
+          console.log("Error While Downloading", err);
         })
         .pipe(res);
     }
@@ -174,4 +164,4 @@ app.post("/download/:id", (req, res) => {
 
 //Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server Started ${PORT}`));
+app.listen(PORT, () => console.log(`Server Started at ${PORT}`));
