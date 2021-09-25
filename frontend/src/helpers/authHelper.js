@@ -16,33 +16,33 @@ import axios from "axios";
 
 //Login validation
 export const login = (token) => {
-    console.log('inside login');
-    if (!token) {
-        console.log("No Token");
-    }
+  console.log("inside login");
+  if (!token) {
+    console.log("No Token");
+  }
 
-    try {
-        console.log('inside try');
-        const body = { token: token };
-        axios.post("http://localhost:5000/getUserInfo", body).then((response) => {
-            console.log(response);
-            const serializedValue = JSON.stringify(response.data);
-            localStorage.setItem('userInfo', serializedValue);
-        });
-        //Check token is valid in this try catch block.
-        //If this fails user will be not loged on
-        // const decoded = jwt.verify(token, jwtSecret);
-        // localStorage.setItem(TOKEN_KEY, decoded);
-        // localStorage.setItem(TOKEN_ID, decoded.id);
-        // localStorage.setItem(TOKEN_FNAME, user[TOKEN_FNAME]);
-        // localStorage.setItem(TOKEN_LNAME, user[TOKEN_LNAME]);
-        // localStorage.setItem(TOKEN_EMAIL, user[TOKEN_EMAIL]);
-        // localStorage.setItem(TOKEN_PHONENO, user[TOKEN_PHONENO]);
-        // localStorage.setItem(TOKEN_ADDRESS, user[TOKEN_ADDRESS]);
-        // console.log(user);
-    } catch (e) {
-        console.log("Token Not Valid");
-    }
+  try {
+    console.log("inside try");
+    const body = { token: token };
+    axios.post("http://localhost:5000/getUserInfo", body).then((response) => {
+      console.log(response);
+      const serializedValue = JSON.stringify(response.data);
+      localStorage.setItem("userInfo", serializedValue);
+    });
+    //Check token is valid in this try catch block.
+    //If this fails user will be not loged on
+    // const decoded = jwt.verify(token, jwtSecret);
+    // localStorage.setItem(TOKEN_KEY, decoded);
+    // localStorage.setItem(TOKEN_ID, decoded.id);
+    // localStorage.setItem(TOKEN_FNAME, user[TOKEN_FNAME]);
+    // localStorage.setItem(TOKEN_LNAME, user[TOKEN_LNAME]);
+    // localStorage.setItem(TOKEN_EMAIL, user[TOKEN_EMAIL]);
+    // localStorage.setItem(TOKEN_PHONENO, user[TOKEN_PHONENO]);
+    // localStorage.setItem(TOKEN_ADDRESS, user[TOKEN_ADDRESS]);
+    // console.log(user);
+  } catch (e) {
+    console.log("Token Not Valid");
+  }
 };
 
 // //Remove all the configuration in localStorage after log out
