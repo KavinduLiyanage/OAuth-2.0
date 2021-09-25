@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { isLogin } from "./Auth";
+import { isLogin } from "./authHelper";
 
 //All the private route Management
 /*
@@ -14,7 +14,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isLogin() ? <Component {...props} /> : <Redirect to="/login" />
+        isLogin() ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );

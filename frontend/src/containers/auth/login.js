@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -39,6 +39,7 @@ const theme = createTheme();
 
 export default function SignInSide() {
   const location = useLocation();
+  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -62,7 +63,7 @@ export default function SignInSide() {
     const article = { code: queryString.parse(location.search) };
     axios.post("http://localhost:5000/getToken", article).then((response) => {
       console.log(response);
-      login(response.data);
+      login(response.data, history);
     });
   }, [location]);
 

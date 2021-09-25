@@ -1,6 +1,5 @@
 import React from "react";
-import ProductsList from "./Products/productsList";
-import { TOKEN_FNAME, TOKEN_LNAME } from "./config";
+// import ProductsList from "./Products/productsList";
 
 export default function HomePage() {
   return (
@@ -8,11 +7,12 @@ export default function HomePage() {
       <h1 align="center">
         {" "}
         <span className="badge badge-dark">
-          Welcome {localStorage.getItem(TOKEN_FNAME)}{" "}
-          {localStorage.getItem(TOKEN_LNAME)}
+          HomePage
+          {/* Welcome {localStorage.getItem(TOKEN_FNAME)}{" "}
+          {localStorage.getItem(TOKEN_LNAME)} */}
         </span>
       </h1>
-      <ProductsList />
+      {/* <ProductsList /> */}
     </div>
   );
 }

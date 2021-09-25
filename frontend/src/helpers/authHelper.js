@@ -1,4 +1,5 @@
 import axios from "axios";
+
 // import {
 //     jwtSecret,
 //     TOKEN_KEY,
@@ -15,7 +16,8 @@ import axios from "axios";
 // const jwt = require("jsonwebtoken");
 
 //Login validation
-export const login = (token) => {
+export const login = (token, history) => {
+    
   console.log("inside login");
   if (!token) {
     console.log("No Token");
@@ -28,6 +30,7 @@ export const login = (token) => {
       console.log(response);
       const serializedValue = JSON.stringify(response.data);
       localStorage.setItem("userInfo", serializedValue);
+      history.push('/home');
     });
     //Check token is valid in this try catch block.
     //If this fails user will be not loged on
@@ -57,6 +60,6 @@ export const login = (token) => {
 // };
 
 //Check user is login every time running a private route
-// export const isLogin = () => {
-//    return !!localStorage.getItem('userInfo');
-// };
+export const isLogin = () => {
+   return !!localStorage.getItem('userInfo');
+};
