@@ -57,15 +57,15 @@ export default function SignInSide() {
     });
   };
 
-  useEffect(() => {
-    console.log(location);
-    console.log(queryString.parse(location.search));
-    const article = { code: queryString.parse(location.search) };
-    axios.post("http://localhost:5000/getToken", article).then((response) => {
-      console.log(response);
-      login(response.data, history);
-    });
-  }, [location]);
+  // useEffect(() => {
+  //   console.log(location);
+  //   console.log(queryString.parse(location.search));
+  //   const article = { code: queryString.parse(location.search) };
+  //   axios.post("http://localhost:5000/getToken", article).then((response) => {
+  //     console.log(response);
+  //     login(response.data, history);
+  //   });
+  // }, [location]);
 
   return (
     <ThemeProvider theme={theme}>
