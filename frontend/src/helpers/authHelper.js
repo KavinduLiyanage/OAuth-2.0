@@ -63,3 +63,8 @@ export const login = (token, history) => {
 export const isLogin = () => {
    return !!localStorage.getItem('userInfo');
 };
+
+export const getProfileImage = () => {
+    const userInfo = localStorage.getItem('userInfo');
+  return userInfo ? JSON.parse(userInfo).picture : null;
+ };
