@@ -33,3 +33,8 @@ export const getProfileImage = () => {
   const userInfo = localStorage.getItem("userInfo");
   return userInfo ? JSON.parse(userInfo).picture : null;
 };
+
+export const getToken = () => {
+    const token = localStorage.getItem("token");
+    return token ? JSON.parse(token) : null;
+  };

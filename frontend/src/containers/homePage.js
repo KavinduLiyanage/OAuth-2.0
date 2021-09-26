@@ -1,6 +1,6 @@
 import React from "react";
 import PrimarySearchAppBar from "../components/appBar";
-// import ProductsList from "./Products/productsList";
+import BasicTable from "./viewDrive";
 
 export default function HomePage() {
   return (
@@ -12,7 +12,10 @@ export default function HomePage() {
           HomePage
         </span>
       </h1>
-      {/* <ProductsList /> */}
+      <div style={{marginLeft:"70px", marginRight:"70px"}}>
+        <BasicTable />
+      </div>
+      
     </div>
   );
 }

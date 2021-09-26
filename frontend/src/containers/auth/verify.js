@@ -21,9 +21,11 @@ export default function Verify() {
   useEffect(() => {
     console.log(location);
     console.log(queryString.parse(location.search));
-    const article = { code: queryString.parse(location.search) };
-    axios.post(`${serverUrl}/getToken`, article).then((response) => {
+    const body = { code: queryString.parse(location.search) };
+    axios.post(`${serverUrl}/getToken`, body).then((response) => {
       console.log(response);
+      const serializedValue = JSON.stringify(response.data);
+      localStorage.setItem("token", serializedValue);
       login(response.data, history);
     });
   }, [location]);
