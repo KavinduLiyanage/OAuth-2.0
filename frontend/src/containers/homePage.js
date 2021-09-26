@@ -10,8 +10,6 @@ export default function HomePage() {
         {" "}
         <span className="badge badge-dark">
           HomePage
-          {/* Welcome {localStorage.getItem(TOKEN_FNAME)}{" "}
-          {localStorage.getItem(TOKEN_LNAME)} */}
         </span>
       </h1>
       {/* <ProductsList /> */}

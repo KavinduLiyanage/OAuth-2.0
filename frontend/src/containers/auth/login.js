@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -14,8 +14,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import GoogleButton from "react-google-button";
 import { display } from "@mui/system";
 import axios from "axios";
-import queryString from "query-string";
-import { login } from "../../helpers/authHelper";
+import { serverUrl } from "../../configs/config";
 
 function Copyright(props) {
   return (
@@ -38,8 +37,6 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
-  const location = useLocation();
-  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -51,21 +48,11 @@ export default function SignInSide() {
   };
 
   const handleChange = () => {
-    axios.get(`http://localhost:5000/getAuthURL`).then((res) => {
+    axios.get(`${serverUrl}/getAuthURL`).then((res) => {
       console.log(res);
       window.location.replace(res.data);
     });
   };
-
-  // useEffect(() => {
-  //   console.log(location);
-  //   console.log(queryString.parse(location.search));
-  //   const article = { code: queryString.parse(location.search) };
-  //   axios.post("http://localhost:5000/getToken", article).then((response) => {
-  //     console.log(response);
-  //     login(response.data, history);
-  //   });
-  // }, [location]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -129,10 +116,6 @@ export default function SignInSide() {
                 id="password"
                 autoComplete="current-password"
               />
-              {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
               <Button
                 type="submit"
                 fullWidth
