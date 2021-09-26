@@ -48,16 +48,10 @@ export const login = (token, history) => {
   }
 };
 
-// //Remove all the configuration in localStorage after log out
-// export const logout = () => {
-//     localStorage.removeItem(TOKEN_KEY);
-//     localStorage.removeItem(TOKEN_ID);
-//     localStorage.removeItem(TOKEN_FNAME);
-//     localStorage.removeItem(TOKEN_LNAME);
-//     localStorage.removeItem(TOKEN_EMAIL);
-//     localStorage.removeItem(TOKEN_PHONENO);
-//     localStorage.removeItem(TOKEN_ADDRESS);
-// };
+//Remove all the configuration in localStorage after log out
+export const logout = () => {
+    localStorage.removeItem('userInfo');
+};
 
 //Check user is login every time running a private route
 export const isLogin = () => {
