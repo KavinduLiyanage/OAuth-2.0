@@ -6,8 +6,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { getUserInfo } from "../helpers/authHelper";
-import PrimarySearchAppBar from "../components/appBar";
+import { getUserInfo } from "../../helpers/authHelper";
+import PrimarySearchAppBar from "../../components/appBar";
 
 const theme = createTheme();
 
@@ -37,7 +37,7 @@ export default function MyAccount() {
             style={{ width: "100px" }}
           />
           <Typography component="h1" variant="h5">
-          {getUserInfo().name}
+            {getUserInfo().name}
           </Typography>
         </Box>
       </Container>

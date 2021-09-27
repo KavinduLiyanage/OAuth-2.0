@@ -3,8 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PrivateRoute from "../helpers/privateRoute";
 import SignInSide from "./auth/login";
 import Verify from "./auth/verify";
-import HomePage from "./homePage";
-import MyAccount from "./myAccount";
+import HomePage from "./home/homePage";
+import MyAccount from "./profile/myAccount";
 
 function MainContainer() {
   return (

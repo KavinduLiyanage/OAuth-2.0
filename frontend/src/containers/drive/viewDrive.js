@@ -6,9 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { getToken } from "../helpers/authHelper";
+import { getToken } from "../../helpers/authHelper";
 import axios from "axios";
-import { serverUrl } from "../configs/config";
+import { serverUrl } from "../../configs/config";
 
 export default function BasicTable() {
   const [rowsNew, setRowsNew] = useState([]);
@@ -24,9 +24,9 @@ export default function BasicTable() {
   const handleRowClick = (id) => {
     const body = { token: getToken() };
     axios.post(`${serverUrl}/download/${id}`, body).then((response) => {
-        console.log(response);
-      });
-  }
+      console.log(response);
+    });
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -45,14 +45,24 @@ export default function BasicTable() {
               <TableRow
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                
               >
-                <TableCell name={row.id} onClick={(e)=>handleRowClick(e.target.name)} component="th" scope="row">
+                <TableCell
+                  name={row.id}
+                  onClick={(e) => handleRowClick(e.target.name)}
+                  component="th"
+                  scope="row"
+                >
                   {row.name}
                 </TableCell>
-                <TableCell name={row.id} align="center">{row.id}</TableCell>
-                <TableCell name={row.id} align="right">{row.kind}</TableCell>
-                <TableCell name={row.id} align="right">{row.mimeType}</TableCell>
+                <TableCell name={row.id} align="center">
+                  {row.id}
+                </TableCell>
+                <TableCell name={row.id} align="right">
+                  {row.kind}
+                </TableCell>
+                <TableCell name={row.id} align="right">
+                  {row.mimeType}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
