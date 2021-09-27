@@ -1,5 +1,6 @@
 import React from "react";
 import PrimarySearchAppBar from "../components/appBar";
+import FileUpload from "./drive/fileUpload";
 import BasicTable from "./viewDrive";
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
       </h1>
       <div style={{marginLeft:"70px", marginRight:"70px"}}>
         <BasicTable />
+        <FileUpload />
       </div>
       
     </div>
