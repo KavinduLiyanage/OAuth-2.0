@@ -15,7 +15,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { getProfileImage, logout } from "../helpers/authHelper";
+import { getUserInfo, logout } from "../helpers/authHelper";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -221,7 +221,7 @@ export default function PrimarySearchAppBar() {
             >
               {/* <AccountCircle /> */}
               <img
-                src={getProfileImage()}
+                src={getUserInfo().picture}
                 alt="profile-img"
                 style={{ width: "50px" }}
               />

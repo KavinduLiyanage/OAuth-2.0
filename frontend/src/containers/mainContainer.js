@@ -4,6 +4,7 @@ import PrivateRoute from "../helpers/privateRoute";
 import SignInSide from "./auth/login";
 import Verify from "./auth/verify";
 import HomePage from "./homePage";
+import MyAccount from "./myAccount";
 
 function MainContainer() {
   return (
@@ -15,6 +16,7 @@ function MainContainer() {
 
           {/*All the Private Routes of System*/}
           <PrivateRoute component={HomePage} path="/home" exact />
+          <PrivateRoute component={MyAccount} path="/account" exact />
           {/* <PrivateRoute component={EditUser} path="/users/:id" exact />
           <PrivateRoute
             component={ProductEdit}
