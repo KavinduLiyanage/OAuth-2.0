@@ -51,5 +51,5 @@ Open [http://localhost:3000](http://localhost:3000) to view client application i
 ## Contributors
 
 <a href="https://github.com/KavinduLiyanage/SSD/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=/KavinduLiyanage/SSD" />
+  <img src="https://contrib.rocks/image?repo=KavinduLiyanage/SSD" />
 </a>
