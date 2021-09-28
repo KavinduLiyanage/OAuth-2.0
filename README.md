@@ -30,3 +30,26 @@ git clone https://github.com/KavinduLiyanage/SSD.git
 or
 
 You can visit https://github.com/KavinduLiyanage/SSD, and download the zipped version of this project and open the extracted project using the IDE.
+
+## Installation Script
+
+##### In the project root directory, run these scripts in terminal:  
+
+### `cd api`
+### `yarn` or `npm install`
+### `yarn start`or `npm start`
+
+The server will run in http://localhost:5000 
+##### Open new terminal in project root directory,
+
+### `cd frontend`
+### `yarn` or `npm install`
+### `yarn start` or `npm start`
+
+Open [http://localhost:3000](http://localhost:3000) to view client application in the browser.
+
+## Contributors
+
+<a href="https://github.com/KavinduLiyanage/SSD/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=/KavinduLiyanage/SSD" />
+</a>
