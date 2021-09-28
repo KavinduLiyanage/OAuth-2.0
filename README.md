@@ -1,34 +1,55 @@
-# Foobar
+Sri Lanka Institute of Information Technology  
+  
+SE4030 - Secure Software Engineering
 
-Foobar is a Python library for dealing with word pluralization.
+Google Drive OAuth
+  
+# Development Team:  
+  
+IT18018288 - Ranawaka M. N.  
+IT18016376 - Liyanage K. S.  
+IT18040654 - Wickramasinghe S.P
+IT18049046 - Chandrasekara L.H.P.S.D 
 
-## Installation
+# Installation and Setup  
+Pre-requisites before installation and setup  
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+ - NodeJS with npm
+ - Yarn
+ - Git
+ - IDE such as IntelliJ or VS Code 
 
-```bash
-pip install foobar
+
+## Project Installation
+
+Open your command prompt at the location where you want the project folder to be created and type the following command at the console:
+
 ```
-
-## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+git clone https://github.com/KavinduLiyanage/SSD.git
 ```
+or
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+You can visit https://github.com/KavinduLiyanage/SSD, and download the zipped version of this project and open the extracted project using the IDE.
 
-Please make sure to update tests as appropriate.
+## Installation Script
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+##### In the project root directory, run these scripts in terminal:  
+
+### `cd api`
+### `yarn` or `npm install`
+### `yarn start`or `npm start`
+
+The server will run in http://localhost:5000 
+##### Open new terminal in project root directory,
+
+### `cd frontend`
+### `yarn` or `npm install`
+### `yarn start` or `npm start`
+
+Open [http://localhost:3000](http://localhost:3000) to view client application in the browser.
+
+## Contributors
+
+<a href="https://github.com/KavinduLiyanage/SSD/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=KavinduLiyanage/SSD" />
+</a>
