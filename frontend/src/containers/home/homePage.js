@@ -9,7 +9,7 @@ export default function HomePage() {
       <PrimarySearchAppBar />
       <h1 align="center">
         {" "}
-        <span className="badge badge-dark">HomePage</span>
+        <span className="badge badge-dark">Drive Overview</span>
       </h1>
       <div style={{ marginLeft: "70px", marginRight: "70px" }}>
         <BasicTable />

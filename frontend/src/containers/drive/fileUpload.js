@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import { getToken } from "../../helpers/authHelper";
 import axios from "axios";
 import { serverUrl } from "../../configs/config";
+import PrimarySearchAppBar from "../../components/appBar";
 // import "./styles.css";
 
 export default function FileUpload() {
@@ -46,27 +47,37 @@ export default function FileUpload() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        // height: '200px',
-      }}
-    >
-      <DropzoneAreaBase
-        fileObjects={files}
-        onAdd={handleAdd}
-        onDelete={handleDelete}
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        size="large"
-        onClick={handleUpload}
-      >
-        Upload
-      </Button>
+    <div className="container">
+      <PrimarySearchAppBar />
+      <h1 align="center">
+        {" "}
+        <span className="badge badge-dark">File Uploader</span>
+      </h1>
+      <div style={{ marginLeft: "70px", marginRight: "70px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
+            // height: '200px',
+          }}
+        >
+          <DropzoneAreaBase
+            fileObjects={files}
+            onAdd={handleAdd}
+            onDelete={handleDelete}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handleUpload}
+          >
+            Upload
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -9,6 +9,12 @@ import Paper from "@mui/material/Paper";
 import { getToken } from "../../helpers/authHelper";
 import axios from "axios";
 import { serverUrl } from "../../configs/config";
+import DownloadIcon from "@mui/icons-material/Download";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Stack from "@mui/material/Stack";
+
+const fileDownload = require("js-file-download");
 
 export default function BasicTable() {
   const [rowsNew, setRowsNew] = useState([]);
@@ -21,9 +27,25 @@ export default function BasicTable() {
     });
   }, []);
 
-  const handleRowClick = (id) => {
+  const handleDownload = (id) => {
+    console.log(id);
     const body = { token: getToken() };
-    axios.post(`${serverUrl}/download/${id}`, body).then((response) => {
+    axios
+      .post(`${serverUrl}/download/${id}`, body, { responseType: "blob" })
+      .then((response) => {
+        console.log(response);
+        console.log(rowsNew.find((item) => item.id === id));
+        fileDownload(
+          response.data,
+          rowsNew.find((item) => item.id === id).name
+        );
+      });
+  };
+
+  const handleDelete = (id) => {
+    console.log(id);
+    const body = { token: getToken() };
+    axios.post(`${serverUrl}/deleteFile/${id}`, body).then((response) => {
       console.log(response);
     });
   };
@@ -37,6 +59,7 @@ export default function BasicTable() {
             <TableCell align="center">Id</TableCell>
             <TableCell align="right">Kind</TableCell>
             <TableCell align="right">Mime Type</TableCell>
+            <TableCell align="center">Actions</TableCell>
           </TableRow>
         </TableHead>
         {rowsNew.length > 0 && (
@@ -46,22 +69,31 @@ export default function BasicTable() {
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell
-                  name={row.id}
-                  onClick={(e) => handleRowClick(e.target.name)}
-                  component="th"
-                  scope="row"
-                >
+                <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell name={row.id} align="center">
-                  {row.id}
-                </TableCell>
-                <TableCell name={row.id} align="right">
-                  {row.kind}
-                </TableCell>
-                <TableCell name={row.id} align="right">
-                  {row.mimeType}
+                <TableCell align="center">{row.id}</TableCell>
+                <TableCell align="right">{row.kind}</TableCell>
+                <TableCell align="right">{row.mimeType}</TableCell>
+                <TableCell align="right">
+                  <Stack direction="row" spacing={2}>
+                    <Button
+                      id={row.id}
+                      onClick={(e) => handleDelete(e.target.id)}
+                      variant="outlined"
+                      startIcon={<DeleteIcon />}
+                    >
+                      Delete
+                    </Button>
+                    <Button
+                      id={row.id}
+                      onClick={(e) => handleDownload(e.target.id)}
+                      variant="contained"
+                      endIcon={<DownloadIcon />}
+                    >
+                      Download
+                    </Button>
+                  </Stack>
                 </TableCell>
               </TableRow>
             ))}
