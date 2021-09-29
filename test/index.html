@@ -64,4 +64,45 @@ app.post("/getToken", (req, res) => {
     });
   });
 
+  app.post("/upload", upload, (req, res) => {
+    var file = req.file;
+  
+    // upload request
+    var url = "https://www.googleapis.com/upload/drive/v3/files";
+    request(
+      {
+        uri: url,
+        qs: {
+          uploadType: "multipart",
+        },
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/related",
+          Authorization: "Bearer " + access_token,
+        },
+        multipart: [
+          {
+            "Content-Type": "application/json; charset=UTF-8",
+            body: JSON.stringify({
+              name: file.originalname,
+            }),
+          },
+          {
+            "Content-Type": file.mimetype,
+            body: fs.createReadStream(file.path),
+          },
+        ],
+      },
+      (error, response, body) => {
+        if (error) {
+          console.error(error);
+          res.sendStatus(500);
+        }
+  
+        fs.unlink(file.path);
+        res.sendStatus(200);
+      }
+    );
+  });
+  
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
