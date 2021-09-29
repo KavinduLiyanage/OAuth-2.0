@@ -41,4 +41,16 @@ app.get("/getAuthURL", (req, res) => {
   return res.send(authUrl);
 });
 
+app.post("/getToken", (req, res) => {
+    if (req.body.code == null) return res.status(400).send("Invalid Request");
+    var code = decodeURIComponent(req.body.code);
+    oAuth2Client.getToken(code, (err, token) => {
+      if (err) {
+        console.error("Error retrieving access token", err);
+        return res.status(400).send("Error retrieving access token");
+      }
+      res.send(token);
+    });
+  });
+  
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
