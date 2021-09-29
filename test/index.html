@@ -1,1 +1,44 @@
-test index.html
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const { google } = require("googleapis");
+const credentials = require("./credentials.json");
+const formidable = require("formidable");
+const fs = require("fs");
+const multer = require("multer");
+
+const app = express();
+
+const client_id = credentials.web.client_id;
+const client_secret = credentials.web.client_secret;
+const redirect_uris = credentials.web.redirect_uris;
+const oAuth2Client = new google.auth.OAuth2(
+  client_id,
+  client_secret,
+  redirect_uris[0]
+);
+
+var upload = multer({
+  dest: "uploads/",
+}).single("image");
+
+const PORT = process.env.PORT || 5000;
+const SCOPE = [
+  "https://www.googleapis.com/auth/drive.metadata https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive",
+];
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get("/", (req, res) => res.send("API is running"));
+
+app.get("/getAuthURL", (req, res) => {
+  const authUrl = oAuth2Client.generateAuthUrl({
+    access_type: "offline",
+    scope: SCOPE,
+  });
+  return res.send(authUrl);
+});
+
+app.listen(PORT, () => console.log(`Server started on ${PORT}`));
