@@ -11,7 +11,7 @@
 - IT18040654 - Wickramasinghe S.P
 - IT18049046 - Chandrasekara L.H.P.S.D 
 
-# Installation and Setup  
+## Installation and Setup  
 Pre-requisites before installation and setup  
 
  - NodeJS with npm
@@ -19,10 +19,9 @@ Pre-requisites before installation and setup
  - Git
  - IDE such as IntelliJ or VS Code 
 
-
 ## Project Installation
 
-Open your command prompt at the location where you want the project folder to be created and type the following command at the console:
+Step 1 - Open your command prompt at the location where you want the project folder to be created and type the following command at the console:
 
 ```
 git clone https://github.com/KavinduLiyanage/SSD.git
@@ -30,6 +29,14 @@ git clone https://github.com/KavinduLiyanage/SSD.git
 or
 
 You can visit https://github.com/KavinduLiyanage/SSD, and download the zipped version of this project and open the extracted project using the IDE.
+
+## Setup API 
+
+Step 2 - Navigate to 'api' folder
+Step 3 - Create Google OAuth Client from Google Cloud Console(Mentioned in the report)
+Step 4 - Download Client ID JSON file, rename it as 'credentials' and paste it in the 'api' folder
+Step 5 - Run 'npm install'
+Step 6 - Run 'npm start'
 
 ## Installation Script
 
