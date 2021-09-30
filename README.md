@@ -67,12 +67,13 @@ Open [http://localhost:3000](http://localhost:3000) to view client application i
                     src="https://avatars.githubusercontent.com/u/49784609?v=4" width="80px;"
                     alt="Liyanage K. S." /><br /><sub><b>Liyanage K. S.</b></sub></a>
         </td>
-        <td align="center"><a href="https://github.com/Sewvandiii"><img
-                    src="https://avatars0.githubusercontent.com/u/61576355?s=460&u=09001c20e83270ee3afd81a692f4b865f61441eb&v=4" width="80px;"
-                    alt="Wickramasinghe S.P" /><br /><sub><b>Wickramasinghe S.P.</b></sub></a>
-        </td>
          <td align="center"><a href="https://github.com/MilindaRanawaka"><img
                     src="https://avatars.githubusercontent.com/u/49589047?v=4" width="80px;"
                     alt="Ranawaka M. N." /><br /><sub><b>Ranawaka M. N.</b></sub></a>
         </td>
+        <td align="center"><a href="https://github.com/Sewvandiii"><img
+                    src="https://avatars0.githubusercontent.com/u/61576355?s=460&u=09001c20e83270ee3afd81a692f4b865f61441eb&v=4" width="80px;"
+                    alt="Wickramasinghe S.P" /><br /><sub><b>Wickramasinghe S.P.</b></sub></a>
+        </td>
+        
 </table>
