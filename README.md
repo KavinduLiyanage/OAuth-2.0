@@ -4,7 +4,7 @@
 
 # Google Drive OAuth
   
-# Development Team:  
+## Development Team:  
   
 - IT18018288 - Ranawaka M. N.  
 - IT18016376 - Liyanage K. S.  
@@ -21,7 +21,7 @@ Pre-requisites before installation and setup
 
 ## Project Installation
 
-Step 1 - Open your command prompt at the location where you want the project folder to be created and type the following command at the console:
+- Step 1 - Open your command prompt at the location where you want the project folder to be created and type the following command at the console:
 
 ```
 git clone https://github.com/KavinduLiyanage/SSD.git
@@ -32,11 +32,11 @@ You can visit https://github.com/KavinduLiyanage/SSD, and download the zipped ve
 
 ## Setup API 
 
-Step 2 - Navigate to 'api' folder
-Step 3 - Create Google OAuth Client from Google Cloud Console(Mentioned in the report)
-Step 4 - Download Client ID JSON file, rename it as 'credentials' and paste it in the 'api' folder
-Step 5 - Run 'npm install'
-Step 6 - Run 'npm start'
+- Step 2 - Navigate to 'api' folder
+- Step 3 - Create Google OAuth Client from Google Cloud Console(Mentioned in the report)
+- Step 4 - Download Client ID JSON file, rename it as 'credentials' and paste it in the 'api' folder
+- Step 5 - Run 'npm install'
+- Step 6 - Run 'npm start'
 
 ## Installation Script
 
