@@ -82,7 +82,7 @@ export default function SignInSide() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              marginTop: "200px"
+              marginTop: "200px",
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>

@@ -24,11 +24,10 @@ export default function Verify() {
     axios.post(`${serverUrl}/getToken`, body).then((response) => {
       const serializedValue = JSON.stringify(response.data);
       // Save access token in localStorage
-      localStorage.setItem("token", serializedValue);  
+      localStorage.setItem("token", serializedValue);
       getLoggedUserData(response.data, history);
     });
   }, [location]);
-
 
   return (
     <ThemeProvider theme={theme}>

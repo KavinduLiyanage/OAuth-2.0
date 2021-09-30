@@ -54,7 +54,6 @@ export default function FileUpload() {
     });
   };
 
-  
   return (
     <div className="container">
       <h1 align="center">

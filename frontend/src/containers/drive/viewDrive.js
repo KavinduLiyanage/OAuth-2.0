@@ -48,7 +48,6 @@ export default function BasicTable() {
       });
   };
 
-  
   // delete drive files using access token
   const handleDelete = (id) => {
     toast("File delete request send!");
@@ -60,7 +59,6 @@ export default function BasicTable() {
       } else toast("File deleting failed!");
     });
   };
-
 
   return (
     <>

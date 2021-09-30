@@ -20,7 +20,6 @@ export const getLoggedUserData = (token, history) => {
   }
 };
 
-
 //Remove all the configuration in localStorage after log out
 export const logout = () => {
   localStorage.removeItem("userInfo");
@@ -37,6 +36,6 @@ export const getUserInfo = () => {
 };
 
 export const getToken = () => {
-    const token = localStorage.getItem("token");
-    return token ? JSON.parse(token) : null;
-  };
+  const token = localStorage.getItem("token");
+  return token ? JSON.parse(token) : null;
+};
