@@ -49,6 +49,8 @@ You can visit https://github.com/KavinduLiyanage/SSD, and download the zipped ve
 ### `yarn start`or `npm start`
 
 The server will run in http://localhost:5000 
+
+## Setup Frontend
 ##### Open new terminal in project root directory,
 
 ### `cd frontend`
