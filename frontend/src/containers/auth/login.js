@@ -26,7 +26,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        QuickShare
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -47,9 +47,9 @@ export default function SignInSide() {
     });
   };
 
-  const handleChange = () => {
+  // Handle sign in with google button onClick
+  const handleLoginButtonClick = () => {
     axios.get(`${serverUrl}/getAuthURL`).then((res) => {
-      console.log(res);
       window.location.replace(res.data);
     });
   };
@@ -82,6 +82,7 @@ export default function SignInSide() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              marginTop: "200px"
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -96,7 +97,7 @@ export default function SignInSide() {
               onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
-              <TextField
+              {/* <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -123,7 +124,7 @@ export default function SignInSide() {
                 sx={{ mt: 3, mb: 2 }}
               >
                 Sign In
-              </Button>
+              </Button> */}
               <div
                 style={{
                   display: "flex",
@@ -132,13 +133,13 @@ export default function SignInSide() {
                 }}
               >
                 <GoogleButton
-                  style={{ width: "100%" }}
-                  onClick={() => handleChange()}
+                  style={{ width: "300px", marginTop: "50px" }}
+                  onClick={() => handleLoginButtonClick()}
                 />
               </div>
 
               <Grid container>
-                <Grid item xs>
+                {/* <Grid item xs>
                   <Link href="#" variant="body2">
                     Forgot password?
                   </Link>
@@ -147,7 +148,7 @@ export default function SignInSide() {
                   <Link href="#" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
-                </Grid>
+                </Grid> */}
               </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
