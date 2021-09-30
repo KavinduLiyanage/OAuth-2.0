@@ -1,23 +1,25 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { serverUrl } from "../configs/config";
 
-//Login validation
-export const login = (token, history) => {
+//Getting logged user data using access token
+export const getLoggedUserData = (token, history) => {
   if (!token) {
-    console.log("No Token");
+    toast("No Token!");
   }
   try {
     const body = { token: token };
     axios.post(`${serverUrl}/getUserInfo`, body).then((response) => {
-      console.log(response);
       const serializedValue = JSON.stringify(response.data);
       localStorage.setItem("userInfo", serializedValue);
+      toast("Sign in successfully!");
       history.push("/home");
     });
   } catch (e) {
-    console.log("Token Not Valid");
+    toast("Sign in failed!");
   }
 };
+
 
 //Remove all the configuration in localStorage after log out
 export const logout = () => {
