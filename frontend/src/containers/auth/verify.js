@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { login } from "../../helpers/authHelper";
+import { getLoggedUserData } from "../../helpers/authHelper";
 import queryString from "query-string";
 import { serverUrl } from "../../configs/config";
 
@@ -18,17 +18,17 @@ export default function Verify() {
   const location = useLocation();
   const history = useHistory();
 
+  // get access token using code
   useEffect(() => {
-    console.log(location);
-    console.log(queryString.parse(location.search));
     const body = { code: queryString.parse(location.search) };
     axios.post(`${serverUrl}/getToken`, body).then((response) => {
-      console.log(response);
       const serializedValue = JSON.stringify(response.data);
-      localStorage.setItem("token", serializedValue);
-      login(response.data, history);
+      // Save access token in localStorage
+      localStorage.setItem("token", serializedValue);  
+      getLoggedUserData(response.data, history);
     });
   }, [location]);
+
 
   return (
     <ThemeProvider theme={theme}>
