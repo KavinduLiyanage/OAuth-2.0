@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import PrivateRoute from "../helpers/privateRoute";
 import SignInSide from "./auth/login";
 import Verify from "./auth/verify";
@@ -27,6 +28,7 @@ function MainContainer() {
           /> */}
         </Switch>
       </BrowserRouter>
+      <ToastContainer hideProgressBar />
     </React.Fragment>
   );
 }
