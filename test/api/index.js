@@ -68,6 +68,25 @@ app.post("/getUserInfo", (req, res) => {
   });
 });
 
+//Read Drive using token
+app.post("/readDrive", (req, res) => {
+  if (req.body.token == null) return res.status(400).send("Token not found");
+  oAuth2Client.setCredentials(req.body.token);
+  const drive = google.drive({ version: "v3", auth: oAuth2Client });
+  drive.files.list(
+    {
+      pageSize: 10,
+    },
+    (err, response) => {
+      if (err) {
+        return res.status(400).send(err);
+      }
+      const files = response.data.files;
+      res.send(files);
+    }
+  );
+});
+
 //Upload file to google drive using Token
 app.post("/upload", upload, (req, res) => {
   var file = req.file;
@@ -110,24 +129,7 @@ app.post("/upload", upload, (req, res) => {
   );
 });
 
-//Read Drive using token
-app.post("/readDrive", (req, res) => {
-  if (req.body.token == null) return res.status(400).send("Token not found");
-  oAuth2Client.setCredentials(req.body.token);
-  const drive = google.drive({ version: "v3", auth: oAuth2Client });
-  drive.files.list(
-    {
-      pageSize: 10,
-    },
-    (err, response) => {
-      if (err) {
-        return res.status(400).send(err);
-      }
-      const files = response.data.files;
-      res.send(files);
-    }
-  );
-});
+
 
 //Download file to google drive using Token and file id
 app.post("/download/:id", (req, res) => {
