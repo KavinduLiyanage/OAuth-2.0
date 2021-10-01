@@ -140,6 +140,13 @@ app.post("/deleteFile/:id", (req, res) => {
   });
 });
 
+//Download file to google drive using Token and file id
+app.post("/download/:id", (req, res) => {
+  if (req.body.token == null) return res.status(400).send("Token not found");
+  oAuth2Client.setCredentials(req.body.token);
+  const drive = google.drive({ version: "v3", auth: oAuth2Client });
+  var fileId = req.params.id;
+});
 
 //Server
 const PORT = process.env.PORT || 5000;
