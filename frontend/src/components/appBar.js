@@ -105,8 +105,10 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={()=>history.push("/upload")}>Upload</MenuItem>
+      {/* <MenuItem onClick={()=>history.push("/upload")}>Upload</MenuItem> */}
+      
       <MenuItem onClick={()=>history.push("/account")}>My account</MenuItem>
+      <br/>
       <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
     </Menu>
   );
@@ -177,6 +179,7 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography
+          onClick={()=>history.push("/home")}
             variant="h6"
             noWrap
             component="div"
@@ -193,6 +196,15 @@ export default function PrimarySearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <Typography
+          onClick={()=>history.push("/upload")}
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            Upload files
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {/* <IconButton

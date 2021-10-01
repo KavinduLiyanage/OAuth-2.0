@@ -56,6 +56,7 @@ export default function FileUpload() {
 
   return (
     <div className="container">
+      <PrimarySearchAppBar />
       <h1 align="center">
         {" "}
         <span className="badge badge-dark">File Uploader</span>
