@@ -140,27 +140,6 @@ app.post("/deleteFile/:id", (req, res) => {
   });
 });
 
-//Download file to google drive using Token and file id
-app.post("/download/:id", (req, res) => {
-  if (req.body.token == null) return res.status(400).send("Token not found");
-  oAuth2Client.setCredentials(req.body.token);
-  const drive = google.drive({ version: "v3", auth: oAuth2Client });
-  var fileId = req.params.id;
-  drive.files.get(
-    { fileId: fileId, alt: "media" },
-    { responseType: "stream" },
-    function (err, response) {
-      response.data
-        .on("end", () => {
-          console.log("Download Completed");
-        })
-        .on("error", (err) => {
-          console.log("Error While Downloading", err);
-        })
-        .pipe(res);
-    }
-  );
-});
 
 //Server
 const PORT = process.env.PORT || 5000;
