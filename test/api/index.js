@@ -7,9 +7,6 @@ const { google } = require("googleapis");
 const fs = require("fs");
 const formidable = require("formidable");
 const credentials = require("./credentials.json");
-const formidable = require("formidable");
-const fs = require("fs");
-const multer = require("multer");
 
 //initialize credentials
 const client_id = credentials.web.client_id;
@@ -21,11 +18,6 @@ const oAuth2Client = new google.auth.OAuth2(
   redirect_uris[0]
 );
 
-var upload = multer({
-  dest: "uploads/",
-}).single("image");
-
-const PORT = process.env.PORT || 5000;
 const SCOPE = [
   "https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/drive.file",
 ];
@@ -101,46 +93,52 @@ app.post("/readDrive", (req, res) => {
 });
 
 //Upload file to google drive using Token
-app.post("/upload", upload, (req, res) => {
-  var file = req.file;
-
-  // upload request
-  var url = "https://www.googleapis.com/upload/drive/v3/files";
-  request(
-    {
+app.post("/fileUpload", (req, res) => {
+  var form = new formidable.IncomingForm();
+  form.parse(req, (err, fields, files) => {
+    if (err) return res.status(400).send(err);
+    const token = JSON.parse(fields.token);
+    console.log(token);
+    if (token == null) return res.status(400).send("Token not found");
+    oAuth2Client.setCredentials(token);
+    console.log(files.file);
+    const drive = google.drive({ version: "v3", auth: oAuth2Client });
+    const fileMetadata = {
+      name: files.file.name,
+    };
+    const media = {
+      mimeType: files.file.type,
+      body: fs.createReadStream(files.file.path),
+    };
+    drive.files.create(
+      {
         resource: fileMetadata,
         media: media,
         fields: "id",
       },
-      method: "POST",
-      headers: {
-        "Content-Type": "multipart/related",
-        Authorization: "Bearer " + access_token,
-      },
-      multipart: [
-        {
-          "Content-Type": "application/json; charset=UTF-8",
-          body: JSON.stringify({
-            name: file.originalname,
-          }),
-        },
-        {
-          "Content-Type": file.mimetype,
-          body: fs.createReadStream(file.path),
-        },
-      ],
-    },
-    (error, response, body) => {
-      if (error) {
-        console.error(error);
-        res.sendStatus(500);
-      }
+      (err, file) => {
+        oAuth2Client.setCredentials(null);
+        if (err) {
+          console.error(err);
+          res.status(400).send(err);
+        } else {
+          res.send("Upload Successful");
+        }
       }
     );
   });
 });
 
-
+//Delete file to google drive using Token and file id
+app.post("/deleteFile/:id", (req, res) => {
+  if (req.body.token == null) return res.status(400).send("Token not found");
+  oAuth2Client.setCredentials(req.body.token);
+  const drive = google.drive({ version: "v3", auth: oAuth2Client });
+  var fileId = req.params.id;
+  drive.files.delete({ fileId: fileId }).then((response) => {
+    res.send(response.data);
+  });
+});
 
 //Download file to google drive using Token and file id
 app.post("/download/:id", (req, res) => {
