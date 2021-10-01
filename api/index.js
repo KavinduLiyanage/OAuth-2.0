@@ -146,6 +146,20 @@ app.post("/download/:id", (req, res) => {
   oAuth2Client.setCredentials(req.body.token);
   const drive = google.drive({ version: "v3", auth: oAuth2Client });
   var fileId = req.params.id;
+  drive.files.get(
+    { fileId: fileId, alt: "media" },
+    { responseType: "stream" },
+    function (err, response) {
+      response.data
+        .on("end", () => {
+          console.log("Download Completed");
+        })
+        .on("error", (err) => {
+          console.log("Error While Downloading", err);
+        })
+        .pipe(res);
+    }
+  );
 });
 
 //Server
