@@ -1,25 +1,26 @@
-# Sri Lanka Institute of Information Technology  
-  
-  ![download](https://user-images.githubusercontent.com/61576355/137448746-da82055f-bdee-4bdd-8b10-d4e063ca3bd9.png)
+# Sri Lanka Institute of Information Technology
+
+![download](https://user-images.githubusercontent.com/61576355/137448746-da82055f-bdee-4bdd-8b10-d4e063ca3bd9.png)
 
 ## SE4030 - Secure Software Engineering
 
 # Google Drive OAuth
-  
-## Development Team:  
-  
-- IT18018288 - Ranawaka M. N.  
-- IT18016376 - Liyanage K. S.  
+
+## Development Team:
+
+- IT18018288 - Ranawaka M. N.
+- IT18016376 - Liyanage K. S.
 - IT18040654 - Wickramasinghe S.P
-- IT18049046 - Chandrasekara L.H.P.S.D 
+- IT18049046 - Chandrasekara L.H.P.S.D
 
-## Installation and Setup  
-Pre-requisites before installation and setup  
+## Installation and Setup
 
- - NodeJS with npm
- - Yarn
- - Git
- - IDE such as IntelliJ or VS Code 
+Pre-requisites before installation and setup
+
+- NodeJS with npm
+- Yarn
+- Git
+- IDE such as IntelliJ or VS Code
 
 ## Project Installation
 
@@ -28,11 +29,12 @@ Pre-requisites before installation and setup
 ```
 git clone https://github.com/KavinduLiyanage/SSD.git
 ```
+
 or
 
 You can visit https://github.com/KavinduLiyanage/SSD, and download the zipped version of this project and open the extracted project using the IDE.
 
-## Setup API 
+## Setup API
 
 - Step 2 - Navigate to 'api' folder
 - Step 3 - Create Google OAuth Client from Google Cloud Console(Mentioned in the report)
@@ -42,19 +44,24 @@ You can visit https://github.com/KavinduLiyanage/SSD, and download the zipped ve
 
 ## Installation Script
 
-##### In the project root directory, run these scripts in terminal:  
+##### In the project root directory, run these scripts in terminal:
 
 ### `cd api`
+
 ### `yarn` or `npm install`
+
 ### `yarn start`or `npm start`
 
-The server will run in http://localhost:5000 
+The server will run in http://localhost:5000
 
 ## Setup Frontend
+
 ##### Open new terminal in project root directory,
 
 ### `cd frontend`
+
 ### `yarn` or `npm install`
+
 ### `yarn start` or `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view client application in the browser.
